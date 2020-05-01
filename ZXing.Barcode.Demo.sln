@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZXing.Barcode.Demo.Android", "ZXing.Barcode.Demo\ZXing.Barcode.Demo.Android\ZXing.Barcode.Demo.Android.csproj", "{54909CB1-427D-497D-BFEB-33B495928FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZXing.Barcode.Demo", "ZXing.Barcode.Demo\ZXing.Barcode.Demo\ZXing.Barcode.Demo.csproj", "{2A9376F5-31CB-4354-A2D5-FC44F76620C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZXing.Barcode.Demo", "ZXing.Barcode.Demo\ZXing.Barcode.Demo\ZXing.Barcode.Demo.csproj", "{2A9376F5-31CB-4354-A2D5-FC44F76620C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomiSoft.ProductCatalog.Client.OpenApiGenerated", "TomiSoft.ProductCatalog.Client.OpenApiGenerated\TomiSoft.ProductCatalog.Client.OpenApiGenerated.csproj", "{DAA39B76-1067-4346-A9DC-A994C4683F24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{2A9376F5-31CB-4354-A2D5-FC44F76620C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A9376F5-31CB-4354-A2D5-FC44F76620C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A9376F5-31CB-4354-A2D5-FC44F76620C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA39B76-1067-4346-A9DC-A994C4683F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA39B76-1067-4346-A9DC-A994C4683F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA39B76-1067-4346-A9DC-A994C4683F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA39B76-1067-4346-A9DC-A994C4683F24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

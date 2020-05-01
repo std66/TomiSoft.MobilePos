@@ -8,12 +8,22 @@
 
     <StackLayout>
         <StackLayout VerticalOptions="FillAndExpand" Padding="10">
-            <Label HorizontalOptions="Center" Text="Termék felvétele" FontSize="Large"/>
+            <Label Text="TomiSoft ProductCatalog" FontSize="Large"/>
 
-            <StackLayout Orientation="Horizontal">
-                <Editor HorizontalOptions="FillAndExpand" Placeholder="Vonalkód" x:Name="Barcode"/>
-                <Button HorizontalOptions="End" Text="Beolvasás" Clicked="Button_Clicked"/>    
-            </StackLayout>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Text="Termék keresése" Clicked="Button_Clicked"/>
+            </Grid>
         </StackLayout>
         
         <StackLayout VerticalOptions="End">

@@ -1,0 +1,89 @@
+openapi: "3.0.0"
+info:
+  title: "TomiSoft Product Database Api"
+  version: "1.0"
+tags:
+  - name: Product
+    description: "This tag refers to product-related operations"
+paths:
+  /Product:
+    get:
+      tags: 
+        - Product
+      description: "Gets a product by barcode"
+      operationId: GetByBarcode
+      parameters: 
+        - $ref: '#/components/parameters/Barcode'
+      responses:
+        200:
+          description: "A product has been found with the given barcode"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductInformationDto"
+        404:
+          description: "No products were found with the given barcode"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResultDto"
+        500:
+          description: "Server error occurred"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResultDto"
+components:
+  parameters:
+    Barcode:
+      in: query
+      name: barcode
+      required: true
+      schema:
+        $ref: '#/components/schemas/Barcode'
+  schemas:
+    Barcode:
+      type: string
+      description: "The product's barcode"
+      example: "4047443305244"
+    ErrorResultDto:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: "An error code representing the root cause of the failure"
+          enum:
+            - Successful
+            - GenericError
+            - UnauthorizedAccess
+            - ProductNotFound
+        message:
+          type: string
+          description: "A human-friendly error message in English"
+          example: "No products found with the given barcode"
+    ProductImageDto:
+      type: object
+      properties:
+        ImageUrl:
+          type: string
+          description: "The URL of the image"
+          example: "http://somelocation.com/sample_product_image.jpg"
+        ImageID:
+          type: integer
+          format: int32
+          example: 152341
+          description: "The unique ID of the image"
+    ProductInformationDto:
+      type: object
+      properties:
+        barcode:
+          $ref: "#/components/schemas/Barcode"
+        name:
+          type: string
+          example: "Optical mouse AM-8000"
+          description: "The name of the product"
+        images:
+          type: array
+          description: "Contains URLs to sample images of the product. If there are no images, this will be an empty array"
+          items:
+            $ref: '#/components/schemas/ProductImageDto'
