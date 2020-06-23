@@ -50,9 +50,5 @@ namespace ZXing.Barcode.Demo.Pages {
                 }
             }
         }
-
-        private async void Button_Clicked_1(object sender, EventArgs e) {
-            await Navigation.PopAsync();
-        }
     }
 }

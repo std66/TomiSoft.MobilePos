@@ -68,7 +68,7 @@ namespace TomiSoft.ProductCatalog.Client.OpenApiGenerated.Model
         /// An error code representing the root cause of the failure
         /// </summary>
         /// <value>An error code representing the root cause of the failure</value>
-        [DataMember(Name="errorCode", EmitDefaultValue=false)]
+        [DataMember(Name="ErrorCode", EmitDefaultValue=false)]
         public ErrorCodeEnum? ErrorCode { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorResultDto" /> class.
@@ -85,7 +85,7 @@ namespace TomiSoft.ProductCatalog.Client.OpenApiGenerated.Model
         /// A human-friendly error message in English
         /// </summary>
         /// <value>A human-friendly error message in English</value>
-        [DataMember(Name="message", EmitDefaultValue=false)]
+        [DataMember(Name="Message", EmitDefaultValue=false)]
         public string Message { get; set; }
 
         /// <summary>

@@ -4,12 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ZXing.Barcode.Demo.MainPage">
+             x:Class="ZXing.Barcode.Demo.MainPage"
+             Title="TomiSoft ProductCatalog">
 
     <StackLayout>
         <StackLayout VerticalOptions="FillAndExpand" Padding="10">
-            <Label Text="TomiSoft ProductCatalog" FontSize="Large"/>
-
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -23,13 +22,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Row="0" Grid.Column="0" Text="Termék keresése" Clicked="Button_Clicked"/>
+                <Button Grid.Row="0" Grid.Column="1" Text="Nyomtatás" Clicked="Button_Clicked_1"/>
             </Grid>
         </StackLayout>
-        
-        <StackLayout VerticalOptions="End">
-            <Button Text="Mentés"/>
-        </StackLayout>
-        
     </StackLayout>
 
 </ContentPage>

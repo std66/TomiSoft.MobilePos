@@ -239,13 +239,11 @@ namespace TomiSoft.ProductCatalog.Client.OpenApiGenerated.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             if (barcode != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(TomiSoft.ProductCatalog.Client.OpenApiGenerated.Client.ClientUtils.ParameterToMultiMap("", "barcode", barcode));
-            }
+                localVarRequestOptions.PathParameters.Add("barcode", TomiSoft.ProductCatalog.Client.OpenApiGenerated.Client.ClientUtils.ParameterToString(barcode)); // path parameter
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get< ProductInformationDto >("/Product", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get< ProductInformationDto >("/Product/{barcode}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -299,14 +297,12 @@ namespace TomiSoft.ProductCatalog.Client.OpenApiGenerated.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
             
             if (barcode != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(TomiSoft.ProductCatalog.Client.OpenApiGenerated.Client.ClientUtils.ParameterToMultiMap("", "barcode", barcode));
-            }
+                localVarRequestOptions.PathParameters.Add("barcode", TomiSoft.ProductCatalog.Client.OpenApiGenerated.Client.ClientUtils.ParameterToString(barcode)); // path parameter
 
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ProductInformationDto>("/Product", localVarRequestOptions, this.Configuration);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ProductInformationDto>("/Product/{barcode}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {

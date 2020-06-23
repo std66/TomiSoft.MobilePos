@@ -36,34 +36,50 @@ namespace TomiSoft.ProductCatalog.Client.OpenApiGenerated.Model
         /// </summary>
         /// <param name="barcode">The product&#39;s barcode.</param>
         /// <param name="name">The name of the product.</param>
+        /// <param name="manufacturer">manufacturer.</param>
         /// <param name="images">Contains URLs to sample images of the product. If there are no images, this will be an empty array.</param>
-        public ProductInformationDto(string barcode = default(string), string name = default(string), List<ProductImageDto> images = default(List<ProductImageDto>))
+        /// <param name="category">category.</param>
+        public ProductInformationDto(string barcode = default(string), string name = default(string), ManufacturerInfoDto manufacturer = default(ManufacturerInfoDto), List<ProductImageDto> images = default(List<ProductImageDto>), CategoryDto category = default(CategoryDto))
         {
             this.Barcode = barcode;
             this.Name = name;
+            this.Manufacturer = manufacturer;
             this.Images = images;
+            this.Category = category;
         }
         
         /// <summary>
         /// The product&#39;s barcode
         /// </summary>
         /// <value>The product&#39;s barcode</value>
-        [DataMember(Name="barcode", EmitDefaultValue=false)]
+        [DataMember(Name="Barcode", EmitDefaultValue=false)]
         public string Barcode { get; set; }
 
         /// <summary>
         /// The name of the product
         /// </summary>
         /// <value>The name of the product</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="Name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Manufacturer
+        /// </summary>
+        [DataMember(Name="Manufacturer", EmitDefaultValue=false)]
+        public ManufacturerInfoDto Manufacturer { get; set; }
 
         /// <summary>
         /// Contains URLs to sample images of the product. If there are no images, this will be an empty array
         /// </summary>
         /// <value>Contains URLs to sample images of the product. If there are no images, this will be an empty array</value>
-        [DataMember(Name="images", EmitDefaultValue=false)]
+        [DataMember(Name="Images", EmitDefaultValue=false)]
         public List<ProductImageDto> Images { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Category
+        /// </summary>
+        [DataMember(Name="Category", EmitDefaultValue=false)]
+        public CategoryDto Category { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,7 +91,9 @@ namespace TomiSoft.ProductCatalog.Client.OpenApiGenerated.Model
             sb.Append("class ProductInformationDto {\n");
             sb.Append("  Barcode: ").Append(Barcode).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Manufacturer: ").Append(Manufacturer).Append("\n");
             sb.Append("  Images: ").Append(Images).Append("\n");
+            sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,10 +139,20 @@ namespace TomiSoft.ProductCatalog.Client.OpenApiGenerated.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Manufacturer == input.Manufacturer ||
+                    (this.Manufacturer != null &&
+                    this.Manufacturer.Equals(input.Manufacturer))
+                ) && 
+                (
                     this.Images == input.Images ||
                     this.Images != null &&
                     input.Images != null &&
                     this.Images.SequenceEqual(input.Images)
+                ) && 
+                (
+                    this.Category == input.Category ||
+                    (this.Category != null &&
+                    this.Category.Equals(input.Category))
                 );
         }
 
@@ -141,8 +169,12 @@ namespace TomiSoft.ProductCatalog.Client.OpenApiGenerated.Model
                     hashCode = hashCode * 59 + this.Barcode.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Manufacturer != null)
+                    hashCode = hashCode * 59 + this.Manufacturer.GetHashCode();
                 if (this.Images != null)
                     hashCode = hashCode * 59 + this.Images.GetHashCode();
+                if (this.Category != null)
+                    hashCode = hashCode * 59 + this.Category.GetHashCode();
                 return hashCode;
             }
         }

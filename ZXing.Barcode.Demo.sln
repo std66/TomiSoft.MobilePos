@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZXing.Barcode.Demo.Android"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZXing.Barcode.Demo", "ZXing.Barcode.Demo\ZXing.Barcode.Demo\ZXing.Barcode.Demo.csproj", "{2A9376F5-31CB-4354-A2D5-FC44F76620C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomiSoft.ProductCatalog.Client.OpenApiGenerated", "TomiSoft.ProductCatalog.Client.OpenApiGenerated\TomiSoft.ProductCatalog.Client.OpenApiGenerated.csproj", "{DAA39B76-1067-4346-A9DC-A994C4683F24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TomiSoft.ProductCatalog.Client.OpenApiGenerated", "TomiSoft.ProductCatalog.Client.OpenApiGenerated\TomiSoft.ProductCatalog.Client.OpenApiGenerated.csproj", "{DAA39B76-1067-4346-A9DC-A994C4683F24}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TomiSoft.Printing.Thermal", "TomiSoft.Printing.Thermal\TomiSoft.Printing.Thermal.csproj", "{33F48AF7-AF82-4DB9-8375-9B73302A1C5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TomiSoft.Printing.Thermal.Tests", "TomiSoft.Printing.Thermal.Tests\TomiSoft.Printing.Thermal.Tests.csproj", "{466029AE-CB16-4EFB-84D2-D78ED90402CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jicai.Q2.ThermalPrinter.XamarinAndroid", "Jicai.Q2.ThermalPrinter.XamarinAndroid\Jicai.Q2.ThermalPrinter.XamarinAndroid.csproj", "{2149A902-D725-4ADB-8994-BA00D6FED7B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +35,18 @@ Global
 		{DAA39B76-1067-4346-A9DC-A994C4683F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAA39B76-1067-4346-A9DC-A994C4683F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAA39B76-1067-4346-A9DC-A994C4683F24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F48AF7-AF82-4DB9-8375-9B73302A1C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F48AF7-AF82-4DB9-8375-9B73302A1C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F48AF7-AF82-4DB9-8375-9B73302A1C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F48AF7-AF82-4DB9-8375-9B73302A1C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{466029AE-CB16-4EFB-84D2-D78ED90402CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{466029AE-CB16-4EFB-84D2-D78ED90402CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{466029AE-CB16-4EFB-84D2-D78ED90402CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{466029AE-CB16-4EFB-84D2-D78ED90402CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2149A902-D725-4ADB-8994-BA00D6FED7B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2149A902-D725-4ADB-8994-BA00D6FED7B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2149A902-D725-4ADB-8994-BA00D6FED7B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2149A902-D725-4ADB-8994-BA00D6FED7B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

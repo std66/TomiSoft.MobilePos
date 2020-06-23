@@ -4,22 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ZXing.Barcode.Demo.Pages.SearchProductPage">
+             x:Class="ZXing.Barcode.Demo.Pages.SearchProductPage"
+             Title="Keresés">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout VerticalOptions="FillAndExpand">
-                <Label HorizontalOptions="Center" Text="Termék keresése" FontSize="Large"/>
-
                 <StackLayout Orientation="Horizontal">
                     <Editor HorizontalOptions="FillAndExpand" Placeholder="Vonalkód" x:Name="Barcode"/>
                     <Button HorizontalOptions="End" Text="Beolvasás" Clicked="Button_Clicked"/>
                 </StackLayout>
 
-                <Label Text="A termék neve itt fog megjelenni" x:Name="ProductName"/>
-            </StackLayout>
-            
-            <StackLayout VerticalOptions="End">
-                <Button Text="Vissza" Clicked="Button_Clicked_1"></Button>
+                <Label Text="A termék neve itt fog megjelenni" x:Name="ProductName" FontSize="Large" HorizontalTextAlignment="Center"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
