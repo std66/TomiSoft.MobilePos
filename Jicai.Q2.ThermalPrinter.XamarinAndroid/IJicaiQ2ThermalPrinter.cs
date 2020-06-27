@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using Com.Iposprinter.Iposprinterservice;
+using System.Threading.Tasks;
 
 namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
     public interface IJicaiQ2ThermalPrinter {
         bool IsConnected { get; }
+        IPosPrinterService Service { get; }
         Task<bool> InitializePrinterAsync();
         Task<bool> PrintTextAsync(string text);
         Task<bool> SendEscPosCommandsAsync(byte[] commands);

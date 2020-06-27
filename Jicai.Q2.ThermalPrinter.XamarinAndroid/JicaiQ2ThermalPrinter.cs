@@ -83,11 +83,10 @@ namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
 
             var t = new TaskCompletionSource<bool>();
 
-            PrinterCallback callback = new PrinterCallback();
-            callback.RunResult += (o, e) => t.TrySetResult(e);
-            callback.ReturnString += (o, e) => t.TrySetResult(false);
+            PrinterCallback cb = new PrinterCallback();
+            cb.ReturnString += (o, e) => t.TrySetResult(e == "UserCMDData is Paesed OK!");
 
-            Printer.PrinterPerformPrint(feedLines, callback);
+            Printer.PrinterPerformPrint(feedLines, cb);
 
             return t.Task;
         }
@@ -102,5 +101,7 @@ namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
                 default: return PrinterStatus.Unknown;
             }
         }
+
+        public IPosPrinterService Service => this.printerService;
     }
 }

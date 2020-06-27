@@ -1,4 +1,7 @@
-﻿using Jicai.Q2.ThermalPrinter.XamarinAndroid;
+﻿using Com.Iposprinter.Iposprinterservice;
+using ESCPOS.Utils;
+using Jicai.Q2.ThermalPrinter.XamarinAndroid;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ZXing.Barcode.Demo.Services;
@@ -53,18 +56,28 @@ namespace ZXing.Barcode.Demo.Droid {
             this.jicaiQ2ThermalPrinter = jicaiQ2ThermalPrinter;
         }
 
+        private PrinterCallback callback = new PrinterCallback();
+
         public async Task Print() {
-            if (await jicaiQ2ThermalPrinter.InitializePrinterAsync()) {
-                await jicaiQ2ThermalPrinter.SendEscPosCommandsAsync(GetEscPosData());
-                var status = jicaiQ2ThermalPrinter.GetPrinterStatus();
-                await jicaiQ2ThermalPrinter.PerformPrint(160);
-            }
+            IPosPrinterService service = jicaiQ2ThermalPrinter.Service;
+            service.PrinterInit(callback);
+            byte[] data = GetEscPosData();
+            string hexData = BitConverter.ToString(data).Replace("-", "");
+            service.SendUserCMDData(data, callback);
+            service.PrinterPerformPrint(0, callback);
+
+            //foreach (string line in demoData) {
+            //    await jicaiQ2ThermalPrinter.PrintTextAsync(line);
+            //}
+            //await jicaiQ2ThermalPrinter.PerformPrint(5);
         }
 
         private byte[] GetEscPosData() {
             List<byte> data = new List<byte>();
-            /*
+
             data.AddRange(ESCPOS.Commands.InitializePrinter);
+            data.AddRange(ESCPOS.Commands.SelectCharacterFont(ESCPOS.Font.A));
+            data.AddRange(ESCPOS.Commands.SelectCodeTable(ESCPOS.CodeTable.Multilingual));
 
             foreach (string line in demoData) {
                 if (string.IsNullOrWhiteSpace(line)) {
@@ -75,8 +88,11 @@ namespace ZXing.Barcode.Demo.Droid {
                 }
 
                 data.AddRange(ESCPOS.Commands.LineFeed);
-            }*/
-            data.AddRange(ESCPOS.Commands.PrintBarCode(ESCPOS.BarCodeType.EAN13, "599953876981"));
+            }
+
+            data.AddRange(ESCPOS.Commands.PrintAndReturnToStandardMode);
+
+            //data.AddRange(ESCPOS.Commands.PrintBarCode(ESCPOS.BarCodeType.EAN13, "599953876981"));
 
             return data.ToArray();
         }
