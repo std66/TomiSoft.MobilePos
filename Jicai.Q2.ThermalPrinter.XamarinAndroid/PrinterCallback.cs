@@ -3,7 +3,7 @@ using System;
 using System.Runtime.CompilerServices;
 
 namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
-    public class PrinterCallback : IPosPrinterCallbackStub {
+    public class PrinterCallback : PosPrinterCallbackStub {
         private readonly string operationName;
 
         public event EventHandler<string> ReturnString;

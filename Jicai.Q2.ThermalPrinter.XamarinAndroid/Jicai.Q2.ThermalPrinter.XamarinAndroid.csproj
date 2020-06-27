@@ -47,16 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Android\BluetoothSocketAdapter.cs" />
+    <Compile Include="Android\IBluetoothSocket.cs" />
     <Compile Include="IJicaiQ2ThermalPrinter.cs" />
     <Compile Include="JicaiQ2ThermalPrinter.cs" />
+    <Compile Include="JicaiQ2ThermalPrinterBluetooth.cs" />
     <Compile Include="PrinterCallback.cs" />
     <Compile Include="PrinterStatus.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidInterfaceDescription Include="IPosPrinterCallback.aidl" />
-    <AndroidInterfaceDescription Include="IPosPrinterService.aidl" />
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jicai.Q2.ThermalPrinter.Bindings\Jicai.Q2.ThermalPrinter.Bindings.csproj">
+      <Project>{e2a63428-1057-41ff-83f4-56266ea54e4f}</Project>
+      <Name>Jicai.Q2.ThermalPrinter.Bindings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

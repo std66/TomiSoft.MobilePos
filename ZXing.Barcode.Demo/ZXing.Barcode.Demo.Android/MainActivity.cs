@@ -25,6 +25,7 @@ namespace ZXing.Barcode.Demo.Droid {
 
             JicaiQ2ThermalPrinter.ServiceConnected += (o, e) => DependencyService.RegisterSingleton<IPosPrinter>(new ThermalPrinterAdapter(e));
             bool result = JicaiQ2ThermalPrinter.InitializeBinding(this);
+            //bool result = JicaiQ2ThermalPrinter.InitializeBluetooth("IposPrinter");
 
             ConfigureServices();
 

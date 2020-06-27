@@ -1,7 +1,10 @@
-﻿using Android.Content;
+﻿using Android.Bluetooth;
+using Android.Content;
 using Android.OS;
 using Com.Iposprinter.Iposprinterservice;
+using Jicai.Q2.ThermalPrinter.XamarinAndroid.Android;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
@@ -11,7 +14,7 @@ namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
         public static event EventHandler<IJicaiQ2ThermalPrinter> ServiceConnected;
 
         public void OnServiceConnected(ComponentName name, IBinder service) {
-            printerService = IPosPrinterServiceStub.AsInterface(service);
+            printerService = PosPrinterServiceStub.AsInterface(service);
 
             if (printerService != null)
                 ServiceConnected?.Invoke(null, this);
@@ -44,23 +47,25 @@ namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
             return context.BindService(i, serviceConnection, Bind.AutoCreate);
         }
 
+        public static bool InitializeBluetooth(string deviceName) {
+            BluetoothDevice device = BluetoothAdapter.DefaultAdapter.BondedDevices.Where(x => x.Name == deviceName).SingleOrDefault();
+            if (device == null)
+                return false;
+
+            BluetoothSocket socket = device.CreateRfcommSocketToServiceRecord(Java.Util.UUID.FromString("00001101-0000-1000-8000-00805F9B34FB"));
+            socket.Connect();
+            ServiceConnected?.Invoke(null, new JicaiQ2ThermalPrinterBluetooth(new BluetoothSocketAdapter(socket)));
+            
+            return true;
+        }
+
         public Task<bool> InitializePrinterAsync() {
             var t = new TaskCompletionSource<bool>();
 
             PrinterCallback callback = new PrinterCallback();
-            callback.RunResult += (o, e) => t.TrySetResult(e);
+            callback.RunResult += (o, e) => t.TrySetResult(e && GetPrinterStatus() == PrinterStatus.Ready);
 
             Printer.PrinterInit(callback);
-
-            return t.Task;
-        }
-
-        public Task<bool> PrintTextAsync(string text) {
-            var t = new TaskCompletionSource<bool>();
-
-            PrinterCallback callback = new PrinterCallback();
-            callback.ReturnString += (o, e) => t.TrySetResult(e == "CACHE PRINTDATA  DATA OK!");
-            Printer.PrintText(text, callback);
 
             return t.Task;
         }
@@ -76,7 +81,7 @@ namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
             return t.Task;
         }
 
-        public Task<bool> PerformPrint(int feedLines) {
+        public Task<bool> PerformPrintAsync() {
             PrinterStatus printerStatus = GetPrinterStatus();
             if (printerStatus != PrinterStatus.Ready)
                 return Task.FromResult(false);
@@ -86,13 +91,13 @@ namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
             PrinterCallback cb = new PrinterCallback();
             cb.ReturnString += (o, e) => t.TrySetResult(e == "UserCMDData is Paesed OK!");
 
-            Printer.PrinterPerformPrint(feedLines, cb);
+            Printer.PrinterPerformPrint(0, cb);
 
             return t.Task;
         }
 
         public PrinterStatus GetPrinterStatus() {
-            switch (Printer.GetPrinterStatus()) {
+            switch (Printer.PrinterStatus) {
                 case 0: return PrinterStatus.Ready;
                 case 1: return PrinterStatus.OutOfPaper;
                 case 2: return PrinterStatus.PrintingHeadOverheat;
@@ -101,7 +106,5 @@ namespace Jicai.Q2.ThermalPrinter.XamarinAndroid {
                 default: return PrinterStatus.Unknown;
             }
         }
-
-        public IPosPrinterService Service => this.printerService;
     }
 }
