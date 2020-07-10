@@ -45,7 +45,7 @@ namespace ZXing.Barcode.Demo.Pages {
 
                     await DisplayAlert("Hiba", message, "Ok");
                 }
-                catch (Exception ex) {
+                catch (Exception) {
                     await DisplayAlert("Hiba", "Ismeretlen hiba történt", "Ok");
                 }
             }

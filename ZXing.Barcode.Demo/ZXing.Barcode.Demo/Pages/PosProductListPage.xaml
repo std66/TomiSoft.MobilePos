@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:ZXing.Barcode.Demo.ViewModel"
+             xmlns:converter="clr-namespace:ZXing.Barcode.Demo.Converters"
+             mc:Ignorable="d"
+             x:Class="ZXing.Barcode.Demo.Pages.PosProductListPage"
+             Title="Eladás">
+
+    <ContentPage.BindingContext>
+        <viewModel:PosProductListViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ProductDataToPricePerUnitStringConverter x:Key="PricePerUnitConverter"/>
+            <converter:ProductDataToItemTotalPriceStringConverter x:Key="ItemTotalPriceConverter"/>
+            <converter:ProductDataToQuantityStringConverter x:Key="ItemQuantityConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <AbsoluteLayout>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout Orientation="Horizontal" BackgroundColor="#ebebeb">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,0">
+                    <Label TextColor="Gray" Text="Összesen: " d:Text="Összesen: " FontSize="Small" VerticalTextAlignment="Center"/>
+                    <Label TextColor="Black" FontAttributes="Bold" FontSize="Large" VerticalTextAlignment="Center"
+                           Text="{Binding TotalPrice, FallbackValue='0 Ft'}" 
+                           d:Text="{Binding TotalPrice, FallbackValue='0 Ft'}" />
+                </StackLayout>
+                
+                <Button HeightRequest="50" Text="Fizetés" d:Text="Fizetés" HorizontalOptions="End" VerticalOptions="Fill" BorderWidth="0"/>
+            </StackLayout>
+            
+            <ListView ItemsSource="{Binding Products}" ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding LocalizedName}" d:Text="{Binding LocalizedName}" FontAttributes="Bold" TextColor="Black"/>
+
+                                    <StackLayout Padding="15,0">
+                                        <Label Text="{Binding Converter={StaticResource ItemQuantityConverter}}" d:Text="{Binding Converter={StaticResource ItemQuantityConverter}}"/>
+                                        <Label Text="{Binding Converter={StaticResource PricePerUnitConverter}}" d:Text="{Binding Converter={StaticResource PricePerUnitConverter}}"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label Text="{Binding Converter={StaticResource ItemTotalPriceConverter}}" d:Text="{Binding Converter={StaticResource ItemTotalPriceConverter}}" TextColor="Red" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Footer>
+                    <StackLayout HeightRequest="100"/>
+                </ListView.Footer>
+            </ListView>
+
+            <StackLayout BackgroundColor="#ebebeb" Orientation="Horizontal">
+                <Button HeightRequest="50" Text="Keresés" d:Text="Keresés" BorderWidth="0"/>
+            </StackLayout>
+        </StackLayout>
+        <ImageButton Command="{Binding ScanBarcodeCommand}" Source="scanbarcode.png" BackgroundColor="#49cafc" CornerRadius="40" Padding="7" AbsoluteLayout.LayoutBounds="0.97,0.97,70,70" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+    </AbsoluteLayout>
+    
+</ContentPage>

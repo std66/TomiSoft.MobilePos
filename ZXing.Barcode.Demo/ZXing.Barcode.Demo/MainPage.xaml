@@ -21,8 +21,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" Text="Termék keresése" Clicked="Button_Clicked"/>
+                <Button Grid.Row="0" Grid.Column="0" Text="Eladás" Clicked="Button_Clicked_2"/>
                 <Button Grid.Row="0" Grid.Column="1" Text="Nyomtatás" Clicked="Button_Clicked_1"/>
+                <Button Grid.Row="0" Grid.Column="2" Text="Termék keresése" Clicked="Button_Clicked"/>
             </Grid>
         </StackLayout>
     </StackLayout>

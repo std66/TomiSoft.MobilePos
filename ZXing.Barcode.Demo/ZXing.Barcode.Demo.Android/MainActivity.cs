@@ -34,6 +34,9 @@ namespace ZXing.Barcode.Demo.Droid {
 
         private static void ConfigureServices() {
             //DependencyService.Register<IPosPrinter, BluetoothPosPrinter>();
+            DependencyService.Register<IBarcodeScannerFactory, BarcodeScannerFactory>();
+            DependencyService.Register<ICurrencyLocalizationService, CurrencyLocalizationService>();
+            DependencyService.Register<IProductDataService, ProductDataService>();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
