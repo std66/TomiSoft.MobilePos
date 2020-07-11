@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModel="clr-namespace:ZXing.Barcode.Demo.ViewModel"
              xmlns:converter="clr-namespace:ZXing.Barcode.Demo.Converters"
+             xmlns:pages="clr-namespace:ZXing.Barcode.Demo.Pages"
              mc:Ignorable="d"
              x:Class="ZXing.Barcode.Demo.Pages.PosProductListPage"
              Title="Eladás">
@@ -63,6 +64,7 @@
 
             <StackLayout BackgroundColor="#ebebeb" Orientation="Horizontal">
                 <Button HeightRequest="50" Text="Keresés" d:Text="Keresés" BorderWidth="0"/>
+                <Label Text="{Binding KeyboardInput}" d:Text="{Binding KeyboardInput}" VerticalTextAlignment="Center"/>
             </StackLayout>
         </StackLayout>
         <ImageButton Command="{Binding ScanBarcodeCommand}" Source="scanbarcode.png" BackgroundColor="#49cafc" CornerRadius="40" Padding="7" AbsoluteLayout.LayoutBounds="0.97,0.97,70,70" AbsoluteLayout.LayoutFlags="PositionProportional"/>
